@@ -1,5 +1,4 @@
-@extends('layout.publicview.PublicAcc')
-
-@section('konten')
+@extends('layout.other.template1.index')
+@section('template1')
     
 @endsection

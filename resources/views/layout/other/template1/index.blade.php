@@ -11,7 +11,15 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    @include('layout/other/template1/header')
+    <header>
+        <img src="img/logo.webp" class="logo">
+        <nav class="navigation">
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('contact') }}">Contact</a>
+            <a href="{{ route('about') }}">About</a>
+            <button href="{{ route('login') }}" class="btnLogin-popup">Get Started</button>
+        </nav>
+    </header>
 
     <main>
         @yield('template1')
