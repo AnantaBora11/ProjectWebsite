@@ -31,7 +31,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td>
-                                        <img src="{{ asset($item->image) }}" style="width: 70px; height:70px;" alt="image" />
+                                        <img src="{{ asset($item->image) }}" style="width: 70px; height:70px;" alt="img" />
                                     </td>
                                     <td>
                                         @if ($item->is_active)
