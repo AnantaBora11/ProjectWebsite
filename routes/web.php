@@ -23,3 +23,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/', [PublicView::class, 'home'])->name ('home');
+
+Route::get('/error', function () {
+    return view('error/error');
+})->name('error');
