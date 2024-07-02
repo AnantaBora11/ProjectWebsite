@@ -18,8 +18,8 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Description</th>
-                                <th>image</th>
-                                <th>Is Active</th>
+                                <th>Image</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -30,18 +30,20 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->description }}</td>
                                     <td>
-                                        <img src="{{ $item->image }}" alt="{{ $item->name }}"> 
-                                    </td>
-                                    <td>
-                                        @if ($item->is_active)
-                                            Active
-                                        @else
-                                            In-Active
+                                        @if ($item->image)
+                                            <img src="{{ $item->image }}" alt="{{ $item->name }}" class="img-fluid" width="40px" height="40px">
                                         @endif
                                     </td>
                                     <td>
+                                        @unless ($item->is_active)
+                                            In-Active
+                                        @else
+                                            Active
+                                        @endunless
+                                    </td>
+                                    <td>
                                         <a href="{{ url('categories/'.$item->id.'/edit') }}" class="btn btn-success mx-2">Edit</a>
-                                        <a href="{{ url('categories/'.$item->id.'/delete') }}" class="btn btn-danger mx1" onclick="return confirm('are you sure?')">Delete</a>
+                                        <a href="{{ url('categories/'.$item->id.'/delete') }}" class="btn btn-danger mx-1" onclick="return confirm('Are you sure you want to delete this category?')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

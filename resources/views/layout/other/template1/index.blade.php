@@ -17,7 +17,7 @@
             <a href="{{ route('home') }}">Home</a>
             <a href="{{ route('contact') }}">Contact</a>
             <a href="{{ route('about') }}">About</a>
-            <button href="{{ route('login') }}" class="btnLogin-popup">Get Started</button>
+            <button onclick="window.location.href='{{ route('login') }}'" class="btnLogin-popup">Get Started</button>
         </nav>
     </header>
 

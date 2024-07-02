@@ -27,3 +27,15 @@ Route::get('/', [PublicView::class, 'home'])->name ('home');
 Route::get('/error', function () {
     return view('error/error');
 })->name('error');
+
+Route::get('/dashboard', function () {
+    return view('private/dashboard');
+})->name('dashboard');
+
+Route::get('/upload', function () {
+    return view('private/upload');
+})->name('upload');
+
+Route::get('/create', function () {
+    return view('private/create');
+})->name('create');
