@@ -29,7 +29,7 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            return redirect('dashboard')->with('success', 'Login Berhasil');
+            return redirect('dashboard/home')->with('success', 'Login Berhasil');
         }else{
             return redirect('sesi')->withErrors('Email atau Password Salah');
         };
@@ -73,7 +73,7 @@ class SessionController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            return redirect('dashboard')->with('success', Auth::user()->name . 'Login Berhasil');
+            return redirect('dashboard/home')->with('success', Auth::user()->name . 'Login Berhasil');
         }else{
             return redirect('sesi')->withErrors('Email atau Password Salah');
         };

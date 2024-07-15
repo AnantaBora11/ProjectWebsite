@@ -18,8 +18,7 @@ public function contact()
 
 public function about()
 {
-    $data=dashboard::all();
-    return view("public/about")->with('data', $data);
+    return view("public/about");
 }
 
 }

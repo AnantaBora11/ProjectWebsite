@@ -8,7 +8,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [PublicController::class, 'home'])->name ('home');
-Route::get('/login', [PublicController::class, 'login'])->name ('login');
 Route::get('/about', [PublicController::class, 'about'])->name ('about');
 
 Route::get('/error', function () {
