@@ -1,0 +1,240 @@
+/* first column */
+#loginku{
+    position: relative;
+    display: flex;
+    height: 100vh;
+    min-height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+
+.formcontainer{
+    display: flex;
+    max-width: 1000px;
+    max-height: 600px;
+    min-width: 300px; 
+    min-height: 200px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    backdrop-filter: blur(20px);
+    margin: 0 auto;
+    width: 80vw; 
+    height: 60vh;
+    overflow: hidden; 
+}
+
+.col-1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 55%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(30px);
+    border-radius: 0 30% 20% 0;
+    transition: border-radius .3s;
+}
+
+.imagelayer{
+    position: relative;
+}
+
+.imglogin{
+    position: center absolute;
+    left: 0;
+    width: 400px;
+}
+
+.motivasi{
+    text-align: center;
+    color: white;
+    width: 300px;
+}
+
+.motivasi span{
+    font-weight: 600;
+    color: black;
+}
+
+/* second column */
+
+.col-2{
+    position: relative;
+    width: 45%;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.btn-box{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn{
+    font-weight: 500;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-1{
+    background: #21264D;
+}
+
+.btn:hover{
+    opacity: 0.85;
+}
+
+/* Login Form */
+.login-form{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 4vw;
+    transition: .3s;
+}
+
+/* Register Form */
+.register-form{
+    position: absolute;
+    left: -50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 4vw;
+    transition: .3s;
+}
+
+.register-form .form-title{
+    margin-block: 40px 20px;
+}
+
+.form-title{
+    margin: 40px 0;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.form-inputs{
+    width: 100%;
+}
+
+.input-box{
+    position: relative;
+}
+
+.input-field{
+    width: 100%;
+    height: 55px;
+    padding: 0 15px;
+    margin: 10px 0;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 15px;
+    outline: none;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0  10px rgba(0, 0, 0, 0.2);
+}
+
+::placeholder{
+    color: white;
+    font-size: 15px;
+}
+
+.input-box .icon{
+    position: absolute;
+    top: 37%;
+    right: 15px;
+    transform: translateY(50);
+    color: white;
+}
+
+.forgot-pass{
+    color: white;
+    justify-content: none;
+    gap: 5px;
+}
+
+.forgot-pass a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-pass a:hover{
+    text-decoration: underline;
+}
+
+.input-submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 55px;
+    padding: 0 15px;
+    margin: 10px 0;
+    color: white;
+    background: #21264d;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-submit:hover{
+    gap: 15px;
+}
+
+.social-login{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-login i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: scale(0.9);
+}
+
+.social-login i:hover{
+    transform: scale(0.9);
+}
+
+/* responsive */
+@media (max-width: 892px){
+    .form-container{
+        width: 400px;
+    }
+    .col-1{
+        display: none;
+    }
+    .col-2{
+        width: 100%;
+    }
+}

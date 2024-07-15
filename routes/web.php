@@ -1,41 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PublicView;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\PrivateController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 
-Route::get('categories',[App\Http\Controllers\CategoryController::class, 'index']);
-Route::get('categories/create',[App\Http\Controllers\CategoryController::class, 'create']);
-Route::post('categories/create', [App\Http\Controllers\CategoryController::class, 'store']);
-Route::get('categories/{id}/edit', [App\Http\Controllers\CategoryController::class, 'edit']);
-Route::put('categories/{id}/edit',[App\Http\Controllers\CategoryController::class, 'update']);
-Route::get('categories/{id}/delete', [App\Http\Controllers\CategoryController::class, 'destroy']);
-
-Route::get('/contact', function () {
-    return view('public/contact');
-})->name('contact');
-
-Route::get('/about', function () {
-    return view('public/about');
-})->name('about');
-
-Route::get('/login', function () {
-    return view('public/login');
-})->name('login');
-
-Route::get('/', [PublicView::class, 'home'])->name ('home');
+Route::get('/', [PublicController::class, 'home'])->name ('home');
+Route::get('/login', [PublicController::class, 'login'])->name ('login');
+Route::get('/about', [PublicController::class, 'about'])->name ('about');
 
 Route::get('/error', function () {
     return view('error/error');
 })->name('error');
 
-Route::get('/dashboard', function () {
-    return view('private/dashboard');
-})->name('dashboard');
 
-Route::get('/upload', function () {
-    return view('private/upload');
-})->name('upload');
+Route::get('index', [PrivateController::class, 'index'])->name('index');
+Route::get('create', [PrivateController::class,'create'])->name ('create');
+Route::get('upload', [PrivateController::class,'upload'])->name ('upload');
 
-Route::get('/create', function () {
-    return view('private/create');
-})->name('create');
+Route::resource('dashboard/project', DashboardController::class);
+Route::resource('dashboard/home', HomeController::class)->names('dashboard.home');
+
+Route::get('/sesi',[SessionController::class, 'index'])->name('login');
+Route::post('/sesi/login',[SessionController::class, 'login']);
+Route::get('/sesi/logout',[SessionController::class, 'logout']);
+Route::get('/sesi/register',[SessionController::class, 'register']);
+Route::post('/sesi/create',[SessionController::class, 'create']);

@@ -1,4 +1,4 @@
-@extends('layout.privateview.private')
+@extends('private.layout.index')
 @section('template')
 
 	<div class="upload-form-container">

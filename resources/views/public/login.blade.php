@@ -1,6 +1,9 @@
-@extends('layout.other.template1.index')
+@extends('public.layout.index')
 @section('template1')
-    
+
+{{-- login container --}}
+<section id="loginku">
+<div class="login-content">
     <div class="formcontainer">
         <div class="col col-1">
             <div class="image-layer">
@@ -14,74 +17,64 @@
                 <button class="btn btn-1" id="login">Sign In</button>
                 <button class="btn btn-2" id="register">Sign Up</button>
             </div>
-            
-             {{-- login container --}}
-            <div class="login-form">
+            <form class="login-form" action="/sesi/login" method="POST">
                 <div class="form-title">
                     <span>Sign In</span>
                 </div>
+                @csrf
                 <div class="form-inputs">
                     <div class="input-box">
-                        <input type="text" class="input-field" placeholder="username" required>
+                        <input value="{{ Session::get('email') }}" for="email" name="email" type="text" class="input-field" placeholder="email" required>
                         <i class="bx bx-user icon"></i>
                     </div>
                     <div class="input-box">
-                        <input type="password" class="input-field" placeholder="password" required>
+                        <input for="password" name="password" type="password" class="input-field" placeholder="password" required>
                         <i class="bx bx-lock-alt icon"></i>
                     </div>
-                    <div class="forgot-pass">
+                    {{-- <div class="forgot-pass">
                         <a href="#">Forgot Password</a>
-                    </div>
+                    </div> --}}
                     <div class="input-box">
-                        <button class="input-submit">
+                        <button name="submit" type="submit" class="input-submit">
                             <span>Sign In</span>
                             <i class="bx bx-right-arrow-alt"></i>
                         </button>
                     </div>
                 </div>
-                <div class="social-login">
-                    <i class="bx bxl-google"></i>
-                    <i class="bx bxl-facebook"></i>
-                    <i class="bx bxl-twitter"></i>
-                    <i class="bx bxl-github"></i>
-                </div>
-            </div>
+            </form>
 
              {{-- Register container --}}
              <div class="register-form">
-                <div class="form-title">
-                    <span>Create Account</span>
-                </div>
-                <div class="form-inputs">
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="email" required>
-                        <i class="bx bx-envelope icon"></i>
+                
+                <form class="login-form" action="/sesi/create" method="POST">
+                    <div class="form-title">
+                        <span>Create Account</span>
                     </div>
-                    <div class="input-box">
-                        <input type="text" class="input-field" placeholder="username" required>
-                        <i class="bx bx-user icon"></i>
+                    @csrf
+                    <div class="form-inputs">
+                        <div class="input-box">
+                            <input value="{{ Session::get('name') }}" for="name" name="name" type="text" class="input-field" placeholder="name" required>
+                            <i class="bx bx-user icon"></i>
+                        </div>
+                        <div class="input-box">
+                            <input value="{{ Session::get('email') }}" for="email" name="email" type="text" class="input-field" placeholder="email" required>
+                            <i class="bx bx-user icon"></i>
+                        </div>
+                        <div class="input-box">
+                            <input for="password" name="password" type="password" class="input-field" placeholder="password" required>
+                            <i class="bx bx-lock-alt icon"></i>
+                        </div>
+                        <div class="input-box">
+                            <button name="submit" type="submit" class="input-submit">
+                                <span>Register</span>
+                                <i class="bx bx-right-arrow-alt"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="input-box">
-                        <input type="password" class="input-field" placeholder="password" required>
-                        <i class="bx bx-lock-alt icon"></i>
-                    </div>
-                    <div class="forgot-pass">
-                        <a href="#">Forgot Password</a>
-                    </div>
-                    <div class="input-box">
-                        <button class="input-submit">
-                            <span>Sign Up</span>
-                            <i class="bx bx-right-arrow-alt"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="social-login">
-                    <i class="bx bxl-google"></i>
-                    <i class="bx bxl-facebook"></i>
-                    <i class="bx bxl-twitter"></i>
-                    <i class="bx bxl-github"></i>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+    </section>
+</div>
 @endsection
