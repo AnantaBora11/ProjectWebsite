@@ -1,7 +1,5 @@
 @extends('dashboard.layout.index')
 @section('template2')
-    <a class="btn btn-primary" href="/dashboard/project/create">Tambah Data Project</a>
-    <table class="table">
         <thead >
             <tr>
                 <th>Foto</th>

@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\dashboard;
+use App\Models\komen;
 use Illuminate\Http\Request;
 
 class PrivateController extends Controller
 {
-    public function index()
+    public function welcome()
 { 
-    return view('private.index');
+    return view('private.welcome');
 }
 
-public function create()
-{
-    return view('private.create');
-}
+public function about()
+    {
+        $data_about = komen::all(); 
+        return view('public.about', compact('data_about')); 
+    }
 
-public function upload()
-{
-    return view("private.upload");
-}
 }

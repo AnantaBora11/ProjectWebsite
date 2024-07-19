@@ -1,6 +1,6 @@
 @extends('public.layout.index')
 @section('template1')
-@foreach ($data as $item)
+@foreach ($data_about as $item)
 <div id="about-card-area">
    <div class="about-wrapper">
       <div class="about-box-area">

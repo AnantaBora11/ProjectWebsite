@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -22,6 +23,11 @@ class HomeController extends Controller
      */
     public function create()
     {
+        // Check if a data already exists
+        if (home::count() > 0) {
+            return redirect()->back()->with('error', 'Hanya dapat membuat 1 data. Hapus data yang sudah ada terlebih dahulu.');
+        }
+
         return view('dashboard.home.create');
     }
 
@@ -38,15 +44,24 @@ class HomeController extends Controller
             'nama' => 'required',
             'deskripsi' => 'required',
             'deskripsi2' => 'required',
+            'foto' => 'required|mimes:jpeg,jpg,png,gif'
         ],[
             'nama.required'=>'Nama Wajib Diisi',
             'deskripsi.required'=>'Deskripsi Wajib Diisi',
             'deskripsi2.required'=>'Deskripsi 2 Wajib Diisi',
+            'foto.required'=>'Foto Wajib Diisi',
+            'foto.mimes'=>'format Wajib JPEG,JPG,PNG,GIF'
         ]);
+        $foto_file = $request->file('foto');
+        $foto_ekstensi = $foto_file->extension();
+        $foto_nama = date('ymdhis'). "." . $foto_ekstensi;
+        $foto_file->move(public_path('foto'), $foto_nama);
+
         $data = [ 
             'nama' => $request->input('nama'),
             'deskripsi' => $request->input('deskripsi'),
             'deskripsi2' => $request->input('deskripsi2'),
+            'foto' => $foto_nama
         ];
         home::create($data);
         return redirect('dashboard/home')->with('success', 'Data Berhasil Ditambahkan'); 
@@ -88,6 +103,23 @@ class HomeController extends Controller
                 'deskripsi' => $request->input('deskripsi'),
                 'deskripsi2' => $request->input('deskripsi2'),
             ];
+
+            if($request->hasFile('foto')){
+                $request->validate([
+                    'foto =>mimes:jpeg,jpg,png,gif'
+                ],[
+                    'foto.mimes' => 'Format Foto wajib JPEG, JPG, PNG, dan GIF'
+                ]);
+                $foto_file = $request->file('foto');
+                $foto_ekstensi = $foto_file->extension();
+                $foto_nama = date('ymdhis'). "." . $foto_ekstensi;
+                $foto_file->move(public_path('foto'), $foto_nama);
+
+                $data_foto = home::where('nama',$id)->first();
+                File::delete(public_path('foto').'/'.$data_foto->foto);
+
+                $data['foto'] = $foto_nama;
+            }
             home::where('nama', $id)->update($data); // Use update() instead of create()
             return redirect('dashboard/home')->with('success', 'Data Berhasil Diupdate'); 
         }
@@ -99,6 +131,8 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
+        $data = home::where('nama', $id)->first();
+        file::delete(public_path('foto').'/'. $data->foto);
         home::where('nama', $id)->delete();
         return redirect()->to(url('dashboard/home'))->with('success', 'Data Berhasil Dihapus');
     }
